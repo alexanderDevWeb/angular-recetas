@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <!--<div id="gluten"><img src="assets\img\gluten-{{gluten()}}.png" alt=""></div>-->
+      <div id="gluten" *ngIf="isGlutenFree">
+        <img src="assets\img\gluten-green.png" alt="">
+      </div>
+      <div id="gluten" *ngIf="!isGlutenFree">
+        <img src="assets\img\gluten-red.png" alt="">
+      </div>
+      <img src="{{foto}}" alt="{{nombre}}">
+      <div class="caption">
+        <h3>{{nombre | uppercase}}</h3>
+        <p>{{descripcion | slice:0:50 }}{{"..."}}</p>
+        <span class="cocinero">{{cocinero}}</span>
+        <span class="label label-default" (click)="sumarLike()">Likes {{likes}}</span>
+        <section class="ingredientes">
+          <h4>Ingredientes</h4>
+          <ol>
+            <li *ngFor="let ingrediente of ingredientes">
+                {{ingrediente}}
+            </li>
+          </ol>
+
+        </section>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+    tipar los atributos
+    P ponemos otro atributo(descripción)
+    en button ponemos un label con lo slikes (number)
+    descripcion (foto: string)
+  -->
