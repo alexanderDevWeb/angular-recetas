@@ -15,12 +15,14 @@
         <span class="cocinero">{{cocinero}}</span>
         <span class="label label-default" (click)="sumarLike()">Likes {{likes}}</span>
         <section class="ingredientes">
-          <h4>Ingredientes</h4>
-          <ol>
-            <li *ngFor="let ingrediente of ingredientes">
-                {{ingrediente}}
-            </li>
-          </ol>
+          <h4 (click)="mostrar()">Ingredientes</h4>
+          <div id="listIng">
+            <ol>
+              <li *ngFor="let ingrediente of ingredientes">
+                  {{ingrediente}}
+              </li>
+            </ol>
+          </div>
 
         </section>
 
