@@ -14,8 +14,8 @@
         <p>{{descripcion | slice:0:50 }}{{"..."}}</p>
         <span class="cocinero">{{cocinero}}</span>
         <span class="label label-default" (click)="sumarLike()">Likes {{likes}}</span>
-        <section class="ingredientes">
-          <h4 (click)="mostrar()">Ingredientes</h4>
+        <section class="ingredientes">        
+        <h4 (click)="mostrar($event)"><span class="label label-primary">{{ingredientes.length}}</span>Ingredientes <i class="fa fa-caret-down"></i></h4>
           <div id="listIng">
             <ol>
               <li *ngFor="let ingrediente of ingredientes">
