@@ -31,13 +31,17 @@
       border-top: 1px solid;
       border-bottom: 1px solid;
       padding: 5px;
-      i:hover{
+      &:hover{
         cursor: pointer;
+      }
+      span{
+        float: right;
+        margin:0 10px;
       }
     }
 
     #listIng{
-      display: none;
+      // display: none;
     }
   }
 }
