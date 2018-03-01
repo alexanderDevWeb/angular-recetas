@@ -1,6 +1,6 @@
 /* Clase para encapsular los atributos de una receta */
 export class Receta {
-  //Atributos
+  // Atributos
   id: number;
   nombre: string;
   descripcion: string;
@@ -10,22 +10,22 @@ export class Receta {
   isGlutenFree: boolean;
   ingredientes: string[];
 
-  constructor(nombre: string, cocinero: string = "Anonimo") {
-    console.log("Receta Constructor");
+  constructor(nombre: string, cocinero: string = 'Anonimo') {
+    console.log('Receta Constructor');
     this.id = -1;
     this.nombre = nombre;
-    this.foto = "/assets/img/receta_default.jpg";
+    this.foto = '/assets/img/marmitako.jpg';
     this.likes = 0;
     this.cocinero = cocinero;
     this.descripcion =
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto earum excepturi eum expedita laudantium corrupti, aspernatur quas maiores vitae? Provident vero dolor porro est quod voluptatum animi placeat obcaecati delectus.";
+      // tslint:disable-next-line:max-line-length
+      'Marmitako de Bonito o Atún. Hoy veremos como hacer un Marmitako en casa, una receta tradicional vasca muy típica del verano que es cuando se captura el bonito.';
     this.isGlutenFree = false;
     this.ingredientes = [];
   }
 
-  addIngrediente(ingrediente:string){
+  addIngrediente(ingrediente: string) {
     this.ingredientes.push(ingrediente);
     console.log(this.ingredientes);
-    
   }
 }

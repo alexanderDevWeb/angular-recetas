@@ -21,27 +21,26 @@
     font-weight: 600;
   }
 
-  span.label.label-primary{
+  span.label.label-primary {
     float: none;
   }
 
+ .caption h3 {
+    text-align: center;
+  }
   .ingredientes {
     h4 {
       text-align: center;
       border-top: 1px solid;
       border-bottom: 1px solid;
       padding: 5px;
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
-      span{
+      span {
         float: right;
-        margin:0 10px;
+        margin: 0 10px;
       }
-    }
-
-    #listIng{
-      // display: none;
     }
   }
 }

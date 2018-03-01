@@ -1,0 +1,22 @@
+button#newUser{
+  margin-bottom: 10px;
+  background-image: none;
+}
+
+.user {
+  width: 50%;
+  display: flex;
+  border: 1px solid lightgrey;
+  padding: 5px;
+  border-radius: 5px;
+  align-items: center;
+  span {
+      font-size: 2em;
+      margin-left: 10px;;
+
+  }
+  img {
+    width: 50px;
+    border-radius: 50%;
+  }
+}

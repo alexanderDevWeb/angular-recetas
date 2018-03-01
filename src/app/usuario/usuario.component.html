@@ -1,2 +1,5 @@
-<h1>{{usuario.nombre}}--{{usuario.id}}</h1>
-<img src="{{usuario.avatar}}" alt="">
+<button [style.backgroundColor]="'black'"  id="newUser" class="btn btn-success" (click)="newUser()">Nuevo Usuario</button>
+<div class="user">
+    <img src="{{usuario.avatar}}" alt="">
+    <span>{{usuario.nombre}} {{usuario.apellido}} {{usuario.id}}</span>
+</div>
