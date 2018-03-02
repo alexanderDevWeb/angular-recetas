@@ -19,9 +19,9 @@ export class ConcesionarioComponent implements OnInit {
     this.coche2 = new Coche('', '');
 
     this.stock = new Array<Coche>();
-    this.stock.push( new Coche('Seat', 'Panda') );
-    this.stock.push( new Coche('Toyota', 'Verso') );
-    this.stock.push( new Coche('Opel', 'Corsa', 'v1.6') );
+    this.stock.push( new Coche('Seat', 'Panda', '', 'panda.jpg') );
+    this.stock.push( new Coche('Toyota', 'Verso', '', 'verso.jpg') );
+    this.stock.push( new Coche('Opel', 'Corsa', 'v1.6', 'corsa.jpg') );
    }
 
   ngOnInit() {
@@ -31,11 +31,15 @@ export class ConcesionarioComponent implements OnInit {
 
   recibirCoche(event) {
     console.log('ConcesionarioComponent recibirCoche %o', event);
+    console.log(typeof(event));
 
     // Si es el primer coche se muestra.
     // Si es el segundo, el primero pasa a ser el segundo
     this.coche2 = this.coche1;
-    this.coche1 = event;
+    this.coche1 = event.coche;
+
+    console.log(this.coche1);
+    console.log(typeof(this.coche1));
   }
 
 }

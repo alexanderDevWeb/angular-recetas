@@ -12,12 +12,12 @@ export class Coche {
   caballos: number;
   consumo: number;
 
-  constructor(marca: string, modelo: string, version?: string) {
+  constructor(marca: string, modelo: string, version?: string, foto: string = 'coche_default.jpg') {
     console.log('User Constructor');
     this.id = -1;
     this.marca = marca;
     this.modelo = modelo;
     this.version = version;
-    this.foto = 'assets/img/coche_default.jpg';
+    this.foto = 'assets/img/' + foto;
   }
 }
