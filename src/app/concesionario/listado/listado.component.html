@@ -1,0 +1,6 @@
+<!-- Listado de coches -->
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let cocheIteracion of stock" (click)="emitirEvento(cocheIteracion)">
+    {{cocheIteracion.marca}} - {{cocheIteracion.modelo}}
+  </li>
+</ul>

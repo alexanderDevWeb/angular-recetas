@@ -9,10 +9,13 @@ import { Usuario } from '../model/usuario';
 export class UsuarioComponent implements OnInit {
 
   usuario: Usuario;
+  arrUsu: any[]=[];
 
   constructor() {
     console.log('Usuarioomponent constructor');
     this.usuario = new Usuario('Pepe');
+    this.arrUsu.push(this.usuario);
+    console.log(this.arrUsu);    
   }
 
   ngOnInit() {

@@ -21,7 +21,7 @@ export class Usuario {
 }
 
 export enum Sexo {
-  masculino,
+  masculino = 0,
   femenino,
   indeterminado
 }
