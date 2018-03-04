@@ -9,3 +9,20 @@
     margin-right: 10px;
   }
 }
+
+#dComparador{
+  display: flex;
+  justify-content: space-around;
+}
+
+#listado {
+  display: flex;
+  align-self: stretch;
+  height: 100%;
+  transition: all 1s;
+}
+
+.row{
+  display: flex;
+  transition: all 1s;
+}

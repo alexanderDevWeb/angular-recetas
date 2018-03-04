@@ -6,7 +6,7 @@
 
 <nav aria-label="Catálogo de Coches">
   <ul class="pagination">
-    <li *ngFor="let coche of stock" [class.active]="coche == coche1">
+    <li *ngFor="let coche of stock" [class.active]="coche == comparador[0]">
       <a>{{coche.marca}} {{coche.modelo}}</a>
     </li>
   </ul>
@@ -18,16 +18,20 @@
   </div>
   <div class="row">
     <!-- Contendrá el listado de coches y el comparador -->
-    <div class="col-xs-2">
+    <div id="listado" class="col-xs-2">
      <app-listado [stock]="stock" (cocheSeleccionado)="recibirCoche($event)"></app-listado>
     </div>
-    <div class="col-xs-9">
+    <div class="col-xs-9" id="dComparador">
       <!-- Comparador -->
         <!-- Llamada componente hijo -->
         <!-- La propiedad coche le pasa al componente el parametro coche con el valor cocheIteracion -->
-        <!--  -->
-        <app-coche *ngIf="coche1.marca" [coche]="coche1" ></app-coche>
-        <app-coche *ngIf="coche2.marca" [coche]="coche2" ></app-coche>
+        
+        <!-- Versión con array comparador -->
+        <app-coche *ngFor="let comparado of comparador" [coche]="comparado" ></app-coche>
+        
+        <!-- Versión con objetos coche -->
+        <!-- <app-coche *ngIf="coche1.marca" [coche]="coche1" ></app-coche>
+        <app-coche *ngIf="coche2.marca" [coche]="coche2" ></app-coche> -->
         <!-- (cocheSeleccionado)="recibirCoche($event)" -->
         <!-- cocheSeleccionado es es el output perteneciente coche.component
             y recibe el valor enviado en coche.component mediante emit({object})
