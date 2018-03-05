@@ -10,6 +10,7 @@ export class CocheComponent implements OnInit {
 
   // Parámetro de Entrada desde elComponente Padre al Hijo
   @Input('coche') coche: Coche;
+  @Input('coche2') coche2: Coche;
 
   // Los parámetros de salida se realizan a traves de Eventos
   @Output() cocheSeleccionado = new EventEmitter();

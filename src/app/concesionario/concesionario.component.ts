@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Coche } from '../model/coche';
+import { CochesService } from '../providers/coches.service';
 
 @Component({
   selector: 'app-concesionario',
@@ -12,21 +13,19 @@ export class ConcesionarioComponent implements OnInit {
   coche1: Coche;
   coche2: Coche;
 
-  constructor() {
+  constructor(public cochesService: CochesService) {
     console.log('ConcesionarioComponent constructor');
 
     this.coche1 = new Coche('', '');
     this.coche2 = new Coche('', '');
 
     this.stock = new Array<Coche>();
-    this.stock.push( new Coche('Seat', 'Panda', '', 'panda.jpg') );
-    this.stock.push( new Coche('Toyota', 'Verso', '', 'verso.jpg') );
-    this.stock.push( new Coche('Opel', 'Corsa', 'v1.6', 'corsa.jpg') );
+    this.stock = cochesService.getAll();
    }
 
   ngOnInit() {
     console.log('ConcesionarioComponent ngOnInit');
-
+    this.stock = this.cochesService.getAll();
   }
 
   recibirCoche(event) {

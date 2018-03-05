@@ -10,18 +10,26 @@ export class ListadoComponent implements OnInit {
 
   // Parámetro de Entrada desde elComponente Padre al Hijo
   @Input('stock') stock: Array<Coche>;
+  @Input('cocheS1') cocheS1: Coche;
+  @Input('cocheS2') cocheS2: Coche;
 
   // Los parámetros de salida se realizan a traves de Eventos
   @Output() cocheSeleccionado = new EventEmitter();
 
 
-  constructor() { }
+  // Criterio del buscador
+  searchText: string;
+
+  constructor() {
+    console.log('Coche Seleccionado: ' + this.cocheSeleccionado);
+  }
 
   ngOnInit() {
   }
 
   emitirEvento(coche) {
-    console.log(coche);
+    // console.log(coche);
+    // console.log(this);
     console.log('ConcesionarioComponent recibirCoche %o', coche);
 
     this.cocheSeleccionado.emit({'coche': coche});

@@ -1,13 +1,20 @@
-<div class="col-sm-6 col-md-4" (click)='seleccionar($event)'>
+<div class="comparado" (click)='seleccionar($event)'>
   <div class="thumbnail">
     <img src="{{coche.foto}}" alt="{{coche.marca}}">
     <div class="caption">
       <h3>{{coche.marca}}</h3>
       <p>Modelo: {{coche.modelo}}</p>
       <p>Versión: {{coche.version}}</p>
-      <p>Puertas: {{coche.puertas}}</p>
-      <p>CV: {{coche.caballos}}</p>
-      <p>Consumo: {{coche.consumo}}</p>
+      <p>Puertas: {{coche.puertas}}
+        <span [class]="(coche.puertas-coche2.puertas>0)?'badge positivo':'badge negativo'">{{coche.puertas-coche2.puertas}}</span>
+      </p>
+      <p>CV: {{coche.caballos}}
+        <span [class]="(coche.caballos-coche2.caballos>0)?'badge positivo':'badge negativo'">{{coche.caballos-coche2.caballos}}</span>
+      </p>
+      <p>Consumo: {{coche.consumo}}
+        <span [class]="(coche.consumo-coche2.consumo>0)?'badge negativo':'badge positivo'">{{coche.consumo-coche2.consumo | round}}</span>
+      </p>
+
     </div>
   </div>
 </div>

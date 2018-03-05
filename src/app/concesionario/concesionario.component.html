@@ -3,14 +3,14 @@
   <b>CocheComponent</b>.
 </p>
 <p>Aprender a pasar parámetros de uno a otro con @input - @output</p>
-
+<!-- 
 <nav aria-label="Catálogo de Coches">
   <ul class="pagination">
     <li *ngFor="let coche of stock" [class.active]="coche == coche1">
       <a>{{coche.marca}} {{coche.modelo}}</a>
     </li>
   </ul>
-</nav>
+</nav> -->
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -19,15 +19,15 @@
   <div class="row">
     <!-- Contendrá el listado de coches y el comparador -->
     <div class="col-xs-2">
-     <app-listado [stock]="stock" (cocheSeleccionado)="recibirCoche($event)"></app-listado>
+     <app-listado [stock]="stock"  [cocheS1]="coche1" [cocheS2]="coche2" (cocheSeleccionado)="recibirCoche($event)"></app-listado><!-- [seleccionado]="coche1" -->
     </div>
-    <div class="col-xs-9">
+    <div class="col-xs-9" id="comparador">
       <!-- Comparador -->
         <!-- Llamada componente hijo -->
         <!-- La propiedad coche le pasa al componente el parametro coche con el valor cocheIteracion -->
         <!--  -->
-        <app-coche *ngIf="coche1.marca" [coche]="coche1" ></app-coche>
-        <app-coche *ngIf="coche2.marca" [coche]="coche2" ></app-coche>
+        <app-coche *ngIf="coche1.marca" [coche]="coche1" [coche2]="coche2"></app-coche>
+        <app-coche *ngIf="coche2.marca" [coche]="coche2" [coche2]="coche1"></app-coche>
         <!-- (cocheSeleccionado)="recibirCoche($event)" -->
         <!-- cocheSeleccionado es es el output perteneciente coche.component
             y recibe el valor enviado en coche.component mediante emit({object})

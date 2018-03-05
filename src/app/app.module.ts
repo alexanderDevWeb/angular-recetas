@@ -1,8 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // Nuestro módulo para Routing
 import { AppRouter } from './app.route';
+
+// Pipes
+import { RoundPipe } from './pipes/round.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -14,6 +19,11 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { ConcesionarioComponent } from './concesionario/concesionario.component';
 import { CocheComponent } from './concesionario/coche/coche.component';
 import { ListadoComponent } from './concesionario/listado/listado.component';
+import { RecetarioComponent } from './recetario/recetario.component';
+
+// Servicios
+import { CochesService } from './providers/coches.service';
+import { RecetasService } from './providers/recetas.service';
 
 @NgModule({
   declarations: [
@@ -25,13 +35,17 @@ import { ListadoComponent } from './concesionario/listado/listado.component';
     UsuarioComponent,
     ConcesionarioComponent,
     CocheComponent,
-    ListadoComponent
+    ListadoComponent,
+    RoundPipe,
+    FilterPipe,
+    RecetarioComponent
   ],
   imports: [
     BrowserModule,
-    AppRouter
+    AppRouter,
+    FormsModule
   ],
-  providers: [],
+  providers: [CochesService, RecetasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,12 @@
 <!-- Listado de coches -->
+<input [(ngModel)]="searchText" placeholder="busca coche">
+
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let cocheIteracion of stock" (click)="emitirEvento(cocheIteracion)">
+  <li class="list-group-item"
+  [class.selec1]="cocheS1 == cocheIteracion"
+  [class.selec2]="cocheS2 == cocheIteracion"
+  *ngFor="let cocheIteracion of stock | filter: searchText"
+  (click)="emitirEvento(cocheIteracion)">
     {{cocheIteracion.marca}} - {{cocheIteracion.modelo}}
   </li>
 </ul>
