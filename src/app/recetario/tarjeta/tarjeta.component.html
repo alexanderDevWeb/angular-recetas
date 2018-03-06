@@ -1,0 +1,23 @@
+<div id="dTarjeta">
+    <div id="gluten">
+        <img [src]="(!recetaSel.isGlutenFree) ? 'assets/img/gluten-red.png' : 'assets/img/gluten-green.png'" alt="">
+      </div>
+    <div id="iTarjeta">
+      <img src="{{recetaSel.foto}}" alt="">
+      
+    </div>
+    <div id="ingTarjeta">
+      <ul>
+        <li *ngFor="let ingre of recetaSel.ingredientes">
+          {{ingre}}
+        </li>
+      </ul>
+    </div>
+    <div id="cocLikes">
+      <h2>{{recetaSel.nombre}}</h2>
+      <span id="a1">{{recetaSel.cocinero}}</span><span id="a2">{{recetaSel.likes}} likes</span>
+    </div>
+    <div id="descTarjeta">
+      {{recetaSel.descripcion}}
+    </div>
+</div>

@@ -11,12 +11,12 @@ export class Receta {
   ingredientes: string[];
 
   constructor(nombre: string,
-    descripcion: string,
-    foto: string,
-    likes: number,
-    cocinero: string,
-    isGlutenFree: boolean,
-    ingredientes: string[] ) {
+    descripcion?: string,
+    foto?: string,
+    likes?: number,
+    cocinero?: string,
+    isGlutenFree?: boolean,
+    ingredientes?: string[] ) {
 
     // console.log('Receta Constructor');
 

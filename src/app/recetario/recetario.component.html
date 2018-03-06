@@ -1,13 +1,23 @@
 <div class="row">
-    <div class="col-xs-3">
+    <div class="col-xs-3" id="dBuscador">
+
+        <input [(ngModel)]="searchText" placeholder="Busca una receta">
+        <label for="che">Sin Gluten</label>
+        <input id="che" type="checkbox" (click)="comprobarCh($event)">
+    </div>
+</div>
+<div class="row" id="recetario" >
+    <div class="col-xs-3" id="dListado">
         <ul class="list-group">
             <li class="list-group-item"
-            *ngFor="let receta of aRecetas">
+            [class.seleccionado]="receta == recSel"
+            *ngFor="let receta of aRecetas | filterReceta: searchText: ch"
+            (click)="seleccionReceta(receta)">
               {{receta.nombre}}
             </li>
           </ul>
     </div>
-    <div class="col-xs-9">
-
+    <div class="col-xs-9" id="dReceta">
+        <app-tarjeta *ngIf="recSel" [recetaSel]="recSel"></app-tarjeta>
     </div>
 </div>

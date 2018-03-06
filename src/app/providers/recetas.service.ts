@@ -8,7 +8,7 @@ export class RecetasService {
     console.log('RecetasService constructor');
   }
 
-  // Retorna todos los coches que tenemos en stock
+  // Retorna todas las recetas que nos pasa el servicio
   getAll(): Receta[] {
     console.log('RecetasService getAll');
     const recetas: Receta[] = [];
@@ -24,7 +24,7 @@ export class RecetasService {
         element.likes,
         element.cocinero,
         element.isGlutenFree,
-        element.igredientes
+        element.ingredientes
       );
 
       recetas.push(receta);
