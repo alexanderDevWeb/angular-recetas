@@ -2,6 +2,10 @@ input:not([type='radio']), textarea{
     width: 100%;
 }
 
+input[type="radio"]{
+   vertical-align: top;
+}
+
 img{
     width: 100%;
 }

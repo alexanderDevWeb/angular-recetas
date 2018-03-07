@@ -13,9 +13,12 @@
     <div class="col-xs-3" id="dListado">
         <h2 class="text-center">Recetas</h2>
         <ul class="list-group">
-            <li class="list-group-item" [class.seleccionado]="receta == recSel" *ngFor="let receta of aRecetas | filterReceta: searchText: ch"
-                (click)="seleccionReceta(receta)">
-                {{receta.nombre}}
+            <li class="list-group-item"
+            [ngClass]='{"seleccionadoV" : receta == recSel && receta.isGlutenFree,
+                      "seleccionadoR" : receta == recSel && !receta.isGlutenFree}'
+            *ngFor="let receta of aRecetas | filterReceta: searchText: ch"
+            (click)="seleccionReceta(receta)">
+            {{receta.nombre}}
             </li>
         </ul>
     </div>
@@ -23,3 +26,9 @@
         <app-tarjeta *ngIf="recSel" [recetaSel]="recSel"></app-tarjeta>
     </div>
 </div>
+
+<!-- 
+            [class.seleccionadoV]="receta == recSel && recSel.isGlutenFree"
+            [class.seleccionadoR]="receta == recSel && !recSel.isGlutenFree"
+
+ -->

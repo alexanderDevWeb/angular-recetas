@@ -44,6 +44,10 @@
     padding: 10px;
     overflow: auto;
     // border: solid;
+    h2{
+        width: 100%;
+        border-bottom: 1px solid #000;
+    }
     ul{
         box-sizing: border-box;
         margin: 0;
@@ -53,8 +57,12 @@
             cursor: pointer;
         }
     }
-    .seleccionado{
+    .seleccionadoV{
         border-bottom: 3px solid green;
+    }
+
+    .seleccionadoR{
+        border-bottom: 3px solid red;
     }
 }
 

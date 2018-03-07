@@ -27,8 +27,8 @@ export class ListadoComponent implements OnInit {
   ngOnInit() {
   }
 
-  emitirEvento(coche) {
-    // console.log(coche);
+  emitirEvento(e, coche) {
+    console.log(e);
     // console.log(this);
     console.log('ConcesionarioComponent recibirCoche %o', coche);
 

@@ -15,7 +15,7 @@
       </div>
       <div class="modal-body">
         <p>Valores: {{formulario.value | json}}</p>
-        <p>Estado: {{formulario.status | json}}</p>
+        <p>Estado: {{formulario.status}}</p>
         <form [formGroup]="formulario" (ngSubmit)="submitar($event)" novalidate>
           <div class="row">
             <div class="col-xs-6">
@@ -33,8 +33,8 @@
     
               <div class="form-group form-inline">
                 <label for="gluten">Sin Gluten: </label>
-                <input type="radio" name="gluten" formControlName="gluten" value="si">Sí
-                <input type="radio" name="gluten" formControlName="gluten" value="no">No
+                <input type="radio" name="gluten" formControlName="gluten" value="si"> Sí
+                <input type="radio" name="gluten" formControlName="gluten" value="no"> No
                 <!-- <p *ngIf="formulario.controls.cocinero.invalid && formulario.controls.cocinero.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p> -->
               </div>
     

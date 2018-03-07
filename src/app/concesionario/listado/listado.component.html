@@ -6,7 +6,7 @@
   [class.selec1]="cocheS1 == cocheIteracion"
   [class.selec2]="cocheS2 == cocheIteracion"
   *ngFor="let cocheIteracion of stock | filter: searchText"
-  (click)="emitirEvento(cocheIteracion)">
+  (click)="emitirEvento($event, cocheIteracion)">
     {{cocheIteracion.marca}} - {{cocheIteracion.modelo}}
   </li>
 </ul>

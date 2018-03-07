@@ -33,6 +33,7 @@
     display: inline-flex;
     align-items: center;
     vertical-align: top;
+    font-size: 1.6em;
     ul{
         list-style: none;
         font-weight: bold;
@@ -57,7 +58,7 @@
         border-top: 1px solid lightgrey;
     }
     #a1{
-        font-weight: bold;
+        font-weight: 400;
     }
     #a2{
         color:red;
@@ -66,6 +67,10 @@
    
     span{
         margin: 5px 30px;
+        font-size: 1.8em;
+        i{
+            font-size: 0.8em;
+        }
     }
 
     .clearfix{
