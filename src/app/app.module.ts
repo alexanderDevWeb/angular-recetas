@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Nuestro módulo para Routing
 import { AppRouter } from './app.route';
@@ -26,6 +26,7 @@ import { ListadoComponent } from './concesionario/listado/listado.component';
 // Servicios
 import { CochesService } from './providers/coches.service';
 import { RecetasService } from './providers/recetas.service';
+import { FormularioComponent } from './recetario/formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +43,14 @@ import { RecetasService } from './providers/recetas.service';
     FilterPipe,
     FilterRecetaPipe,
     RecetarioComponent,
-    TarjetaComponent
+    TarjetaComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
     AppRouter,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [CochesService, RecetasService],
   bootstrap: [AppComponent]

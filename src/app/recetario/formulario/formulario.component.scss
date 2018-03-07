@@ -1,0 +1,15 @@
+input:not([type='radio']), textarea{
+    width: 100%;
+}
+
+img{
+    width: 100%;
+}
+
+#imgPrev{
+    min-height: 150px;
+    margin-bottom: 20px;
+    background-image: url('/assets/img/receta_default.jpg');
+    background-size: cover;
+    background-position: center;
+}

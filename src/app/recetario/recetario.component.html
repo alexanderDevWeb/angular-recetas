@@ -1,21 +1,23 @@
 <div class="row">
     <div class="col-xs-3" id="dBuscador">
-
         <input [(ngModel)]="searchText" placeholder="Busca una receta">
-        <label for="che">Sin Gluten</label>
+    </div>
+    <div class="col-xs-9" id="chGluten">
         <input id="che" type="checkbox" (click)="comprobarCh($event)">
+        <label for="che">Sin Gluten</label>
+        <!-- Formulario con ventana modal -->
+        <app-formulario></app-formulario>
     </div>
 </div>
-<div class="row" id="recetario" >
+<div class="row" id="recetario">
     <div class="col-xs-3" id="dListado">
+        <h2 class="text-center">Recetas</h2>
         <ul class="list-group">
-            <li class="list-group-item"
-            [class.seleccionado]="receta == recSel"
-            *ngFor="let receta of aRecetas | filterReceta: searchText: ch"
-            (click)="seleccionReceta(receta)">
-              {{receta.nombre}}
+            <li class="list-group-item" [class.seleccionado]="receta == recSel" *ngFor="let receta of aRecetas | filterReceta: searchText: ch"
+                (click)="seleccionReceta(receta)">
+                {{receta.nombre}}
             </li>
-          </ul>
+        </ul>
     </div>
     <div class="col-xs-9" id="dReceta">
         <app-tarjeta *ngIf="recSel" [recetaSel]="recSel"></app-tarjeta>

@@ -20,6 +20,9 @@ export class RecetarioComponent implements OnInit {
     this.aRecetas = recetasService.getAll();
 
     this.ch = false;
+
+    // Inicializo una de las recetas para ser mostrada desde el principio
+    this.recSel = this.aRecetas[0];
   }
 
   ngOnInit() {

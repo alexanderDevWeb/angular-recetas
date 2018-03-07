@@ -38,9 +38,6 @@ export class FilterRecetaPipe implements PipeTransform {
 
     searchText = searchText.toLowerCase();
 
-    // Modifico el string para añadirle la marca de booleano
-    let recetaBool;
-
     return recetario.filter(it => {
       // Si es gluten free añado y está checeado añado #
       if (ch) {

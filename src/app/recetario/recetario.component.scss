@@ -17,13 +17,27 @@
     }
 }
 
-#che{
-    display: inline;
-    vertical-align: top;
+#chGluten{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    label, #che{
+        margin: 15px 0;
+        font-weight: normal;
+    }
+    #che{
+        display: inline;
+        vertical-align: middle;
+    }
+
+    app-formulario{
+        margin-left:auto;
+    }
 }
 
 #dListado{
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
     height: 100%;
