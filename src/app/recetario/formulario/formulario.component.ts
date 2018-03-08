@@ -5,7 +5,13 @@ import { Receta } from '../../model/receta';
 // npm install --save-dev jquery
 import * as $ from 'jquery';
 
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+  FormArray
+} from '@angular/forms';
 
 @Component({
   selector: 'app-formulario',
@@ -13,11 +19,18 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent implements OnInit {
+
   formulario: FormGroup;
+  ingredientes: FormArray;
 
   constructor(private recetaService: RecetasService, private fb: FormBuilder) {
     console.log('FormularioComponent constructor');
+    // Crea un objeto con todos los controles del formulario (Formulario en sí)
+    // Es un grupo
     this.crearFormulario();
+
+    // Crea un array de objetos, que a su vez son grupos de controles
+    this.ingredientes = this.formulario.get('ingredientes') as FormArray;
   }
 
   ngOnInit() {
@@ -29,20 +42,70 @@ export class FormularioComponent implements OnInit {
     this.formulario = this.fb.group({
       // FormControl (input) => ['value', [Validaciones]]
       nombre: ['', [Validators.required, Validators.minLength(2)]],
-      cocinero: ['', [Validators.minLength(2)]],
+      cocinero: ['', [Validators.minLength(5)]],
       gluten: ['no'],
       descripcion: ['', [Validators.required, Validators.minLength(2)]],
-      foto: ['', [Validators.required]] // Valor por defecto
+      foto: [''], // Valor por defecto
+
+      // Para el array de ingredientes hay que crear un formaArray
+      ingredientes: this.fb.array([this.createIngredienteFormGroup()])
     });
+  }
+
+  /**
+   * Creamos un FormGroup para los Ingredientes
+   * */
+  createIngredienteFormGroup(): FormGroup {
+    console.log('FormularioComponent createIngredienteFormGroup');
+    return this.fb.group({
+      nombre: ['', [Validators.required]]
+    });
+  }
+
+  /**
+   * Evento para crear un nuevo Ingrediente
+   */
+  clickOtroIngrediente() {
+    console.log('FormularioComponent clickOtroIngrediente');
+    this.ingredientes.push(this.createIngredienteFormGroup());
   }
 
   submitar(e): void {
     console.log('FormularioComponent onSubmit()');
 
+    const receta = this.mapearFormularioReceta();
+
+    // Añado la receta mediante el servicio
+    this.recetaService.crear(receta);
+
+    // Creo un formulario para resetearlo
+    this.crearFormulario();
+
+    $('#aspa').click();
+  }
+
+  /**
+   * Nos retorna las clases para darle estilos al div que contiene el input
+   * @param control : FormControl
+   */
+  estilosInput(control: FormControl): string {
+    const CLASS_ERROR = 'has-error';
+    const CLASS_SUCCESS = 'has-success';
+
+    if (control.dirty) {
+      return control.valid ? CLASS_SUCCESS : CLASS_ERROR;
+    } else {
+      return 'form-group';
+    }
+  }
+
+  mapearFormularioReceta(): Receta {
     // Recojo los valores mostrados en el formulario
     const nombre = this.formulario.value.nombre;
     const descripcion = this.formulario.value.descripcion;
-    const foto = (this.formulario.value.foto) ? (this.formulario.value.foto) : '/assets/img/receta_default.jpg';
+    const foto = this.formulario.value.foto
+      ? this.formulario.value.foto
+      : '/assets/img/receta_default.jpg';
     const likes = 0;
     const cocinero = this.formulario.value.cocinero;
     const gluten = this.formulario.value.gluten === 'si' ? true : false;
@@ -57,12 +120,6 @@ export class FormularioComponent implements OnInit {
       gluten
     );
 
-    // Añado la receta mediante el servicio
-    this.recetaService.crear(receta);
-
-    // Creo un formulario para resetearlo
-    this.crearFormulario();
-
-    $('#aspa').click();
+    return receta;
   }
 }

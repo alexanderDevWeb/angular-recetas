@@ -19,28 +19,28 @@
         <form [formGroup]="formulario" (ngSubmit)="submitar($event)" novalidate>
           <div class="row">
             <div class="col-xs-6">
-              <div class="form-group form-inline">
-                <label for="nombre">Nombre: </label>
-                <input id="nombre" name="nombre" formControlName="nombre">
+              <div [ngClass]="estilosInput(formulario.controls.nombre)" class="form-group form-inline">
+                <label for="nombre" class="control-label">Nombre: </label>
+                <input id="nombre" name="nombre" formControlName="nombre" class="form-control">
                 <p *ngIf="formulario.controls.nombre.invalid && formulario.controls.nombre.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p>
               </div>
-    
-              <div class="form-group form-inline">
-                <label for="cocinero">Cocinero: </label>
-                <input id="cocinero" name="cocinero" formControlName="cocinero">
+
+              <div [ngClass]="estilosInput(formulario.controls.cocinero)" class="form-group form-inline">
+                <label for="cocinero" class="control-label">Cocinero: </label>
+                <input id="cocinero" name="cocinero" formControlName="cocinero" class="form-control">
                 <!-- <p *ngIf="formulario.controls.cocinero.invalid && formulario.controls.cocinero.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p> -->
               </div>
-    
+
               <div class="form-group form-inline">
                 <label for="gluten">Sin Gluten: </label>
                 <input type="radio" name="gluten" formControlName="gluten" value="si"> Sí
                 <input type="radio" name="gluten" formControlName="gluten" value="no"> No
                 <!-- <p *ngIf="formulario.controls.cocinero.invalid && formulario.controls.cocinero.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p> -->
               </div>
-    
-              <label for="descripcion">Descripción: </label>
-              <div class="form-group form-inline">
-                <textarea id="descripcion" rows="10" name="descripcion" formControlName="descripcion">
+
+              <div [ngClass]="estilosInput(formulario.controls.descripcion)" class="form-group form-inline">
+                <label for="descripcion" class="control-label">Descripción: </label>
+                <textarea id="descripcion" rows="10" name="descripcion" formControlName="descripcion" class="form-control">
                 </textarea>
                 <!-- <p *ngIf="formulario.controls.cocinero.invalid && formulario.controls.cocinero.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p> -->
               </div>
@@ -49,13 +49,22 @@
               <div id="imgPrev">
                 <img src="{{formulario.value.foto}}" alt="">
               </div>
-                <div class="form-group form-inline">
-                    <label for="foto">Foto: </label>
-                    <input id="foto" name="foto" formControlName="foto">
-                    <!-- <p *ngIf="formulario.controls.cocinero.invalid && formulario.controls.cocinero.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p> -->
-                  </div>
+              <div class="form-group form-inline">
+                <label for="foto" class="control-label">Foto: </label>
+                <input id="foto" name="foto" formControlName="foto" class="form-control">
+                <!-- <p *ngIf="formulario.controls.cocinero.invalid && formulario.controls.cocinero.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p> -->
+              </div>
+              <label for="">Ingredientes </label>
+              <a (click)="clickOtroIngrediente()">Añadir Ingrediente</a>
+              <div formArrayName="ingredientes" *ngFor="let ingrediente of formulario.get('ingredientes').controls; let i = index;">
+                <div [formGroupName]="i">
+                  <input formControlName="nombre" placeholder="Nuevo Ingrediente" class="ingrediente-input">
+                  <span class="glyphicon glyphicon-remove-circle" (click)="clickEliminarIngrediente(i)"></span>
+                </div>
+              </div>
             </div>
-          </div><!-- row-->
+          </div>
+          <!-- row-->
 
 
           <input type="submit" [disabled]="!formulario.valid" class='btn btn-success btn-block' value="Crear">
