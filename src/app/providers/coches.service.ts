@@ -4,6 +4,9 @@ import { MOCKS_COCHES } from './mocks.coches';
 
 @Injectable()
 export class CochesService {
+
+  coches: Coche[];
+
   constructor() {
     console.log('CochesService constructor');
   }
@@ -11,7 +14,7 @@ export class CochesService {
   // Retorna todos los coches que tenemos en stock
   getAll(): Coche[] {
     console.log('CochesService getAll');
-    const coches: Coche[] = [];
+    this.coches = [];
     let coche;
 
     const jsonData = JSON.parse(MOCKS_COCHES.stock);
@@ -27,9 +30,17 @@ export class CochesService {
         element.consumo
       );
 
-      coches.push(coche);
+      this.coches.push(coche);
     });
 
-    return coches;
+    return this.coches;
+  }
+
+    /**
+   * Crear nueva receta
+   * @param receta
+   */
+  crear(coche: Coche): void {
+    this.coches.unshift(coche);
   }
 }

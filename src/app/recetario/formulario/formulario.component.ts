@@ -29,7 +29,8 @@ export class FormularioComponent implements OnInit {
     // Es un grupo
     this.crearFormulario();
 
-    // Crea un array de objetos, que a su vez son grupos de controles
+    // Es un array de objetos, que a su vez son grupos de controles
+    // Es un selector ???
     this.ingredientes = this.formulario.get('ingredientes') as FormArray;
   }
 
@@ -70,6 +71,16 @@ export class FormularioComponent implements OnInit {
     this.ingredientes.push(this.createIngredienteFormGroup());
   }
 
+  /**
+   * Elimina el objeto del arrayForm del control Ingrediente
+   * @param index
+   */
+  clickEliminarIngrediente( index ) {
+    console.log('FormularioComponent clickEliminarIngrediente');
+    this.ingredientes.removeAt(index);
+  }
+
+
   submitar(e): void {
     console.log('FormularioComponent onSubmit()');
 
@@ -109,6 +120,13 @@ export class FormularioComponent implements OnInit {
     const likes = 0;
     const cocinero = this.formulario.value.cocinero;
     const gluten = this.formulario.value.gluten === 'si' ? true : false;
+    const ingredientes: string[] = [];
+
+
+    // Recuperar los ingredientes
+    this.formulario.value.ingredientes.map(element => {
+      ingredientes.push(element.nombre);
+    });
 
     // Creo un objeto Receta con los valores del formulario
     const receta = new Receta(
@@ -117,7 +135,8 @@ export class FormularioComponent implements OnInit {
       foto,
       likes,
       cocinero,
-      gluten
+      gluten,
+      ingredientes
     );
 
     return receta;

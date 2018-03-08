@@ -1,4 +1,4 @@
-input:not([type='radio']), textarea{
+input:not([type='radio']), .form-group.form-inline textarea{
     width: 100%;
 }
 
@@ -16,4 +16,9 @@ img{
     background-image: url('/assets/img/receta_default.jpg');
     background-size: cover;
     background-position: center;
+}
+
+input.ingrediente-input{
+    width: initial;
+    margin-bottom: 10px;
 }

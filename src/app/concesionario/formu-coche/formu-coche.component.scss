@@ -1,0 +1,25 @@
+button:first-child{
+    margin-top: -7px;
+    float: right;
+}
+
+#modalCoche input{
+    width: 100%;
+}
+
+#colImagen{
+    margin-top: 100px;
+    
+}
+
+img{
+    width: 100%;
+}
+
+#imgPrev{
+    min-height: 150px;
+    margin-bottom: 20px;
+    background-image: url('/assets/img/coche_default.jpg');
+    background-size: cover;
+    background-position: center;
+}

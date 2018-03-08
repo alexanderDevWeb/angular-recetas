@@ -1,0 +1,74 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalCoche">
+  <span class="glyphicon glyphicon-plus"></span>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCoche" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span id="aspa" aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Nuevo Coche</h4>
+      </div>
+      <div class="modal-body">
+        <p>Valores: {{formuCoche.value | json}}</p>
+        <p>Estado: {{formuCoche.status}}</p>
+        <form [formGroup]="formuCoche" (ngSubmit)="submitar($event)" novalidate>
+          <div class="row">
+            <div class="col-xs-6">
+              <div [ngClass]="estilosInput(formuCoche.controls.marca)" class="form-group form-inline">
+                <label for="marca" class="control-label">Marca: </label>
+                <input id="marca" name="marca" formControlName="marca" class="form-control">
+              </div>
+
+              <div [ngClass]="estilosInput(formuCoche.controls.modelo)" class="form-group form-inline">
+                <label for="modelo" class="control-label">Modelo: </label>
+                <input id="modelo" name="modelo" formControlName="modelo" class="form-control">
+                <p *ngIf="formuCoche.controls.modelo.invalid && formuCoche.controls.modelo.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p>
+              </div>
+              <div [ngClass]="estilosInput(formuCoche.controls.version)" class="form-group form-inline">
+                <label for="version" class="control-label">Version: </label>
+                <input id="version" name="version" formControlName="version" class="form-control">
+                <p *ngIf="formuCoche.controls.version.invalid && formuCoche.controls.version.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p>
+              </div>
+              <div [ngClass]="estilosInput(formuCoche.controls.puertas)" class="form-group form-inline">
+                <label for="puertas" class="control-label">Puertas: </label>
+                <input type="number" id="puertas" name="puertas" formControlName="puertas" class="form-control">
+                <p *ngIf="formuCoche.controls.puertas.invalid && formuCoche.controls.puertas.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p>
+              </div>
+              <div [ngClass]="estilosInput(formuCoche.controls.caballos)" class="form-group form-inline">
+                <label for="caballos" class="control-label">Caballos: </label>
+                <input type="number" id="caballos" name="caballos" formControlName="caballos" class="form-control">
+                <p *ngIf="formuCoche.controls.caballos.invalid && formuCoche.controls.caballos.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p>
+              </div>
+              <div [ngClass]="estilosInput(formuCoche.controls.consumo)" class="form-group form-inline">
+                <label for="consumo" class="control-label">Consumo: </label>
+                <input type="number" id="consumo" name="consumo" formControlName="consumo" class="form-control">
+                <p *ngIf="formuCoche.controls.consumo.invalid && formuCoche.controls.consumo.touched" class="text-danger">*Obligatorio, mínimo 2 letras</p>
+              </div>
+            </div>
+            <!-- col -->
+            <div class="col-xs-6" id="colImagen">
+              <div id="imgPrev">
+                <img src="{{formuCoche.value.foto}}" alt="">
+              </div>
+              <div class="form-group form-inline">
+                <label for="foto" class="control-label">Foto: </label>
+                <input id="foto" name="foto" formControlName="foto" class="form-control">
+              </div>
+            </div>
+          </div>
+          <!-- row-->
+
+
+          <input type="submit" [disabled]="!formuCoche.valid" class='btn btn-success btn-block' value="Crear">
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

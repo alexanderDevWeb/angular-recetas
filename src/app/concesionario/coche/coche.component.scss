@@ -1,21 +1,29 @@
-.caption{
-    h3{
-        text-align: center;
-    }
+.caption {
+  h3 {
+    text-align: center;
+  }
 }
 
-.positivo{
-    background: cornflowerblue;
+.positivo {
+  background: cornflowerblue;
 }
 
-.negativo{
-    background: coral;
+.negativo {
+  background: coral;
 }
 
-.comparado{
-    height: 100%;
+.comparado {
+  height: 100%;
 }
 
-.thumbnail img{
-    width: 200px;
+.thumbnail img {
+  width: 200px;
+}
+
+.iTarjeta {
+  width: 200px;
+  min-height: 100px;
+  background-image: url("/assets/img/coche_default.jpg");
+  background-size: cover;
+  background-position: center;
 }

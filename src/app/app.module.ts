@@ -27,6 +27,7 @@ import { ListadoComponent } from './concesionario/listado/listado.component';
 import { CochesService } from './providers/coches.service';
 import { RecetasService } from './providers/recetas.service';
 import { FormularioComponent } from './recetario/formulario/formulario.component';
+import { FormuCocheComponent } from './concesionario/formu-coche/formu-coche.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { FormularioComponent } from './recetario/formulario/formulario.component
     FilterRecetaPipe,
     RecetarioComponent,
     TarjetaComponent,
-    FormularioComponent
+    FormularioComponent,
+    FormuCocheComponent
   ],
   imports: [
     BrowserModule,
