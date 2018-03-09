@@ -22,12 +22,19 @@ import { RecetaComponent } from './receta/receta.component';
 import { ConcesionarioComponent } from './concesionario/concesionario.component';
 import { CocheComponent } from './concesionario/coche/coche.component';
 import { ListadoComponent } from './concesionario/listado/listado.component';
+import { FormularioComponent } from './recetario/formulario/formulario.component';
+import { FormuCocheComponent } from './concesionario/formu-coche/formu-coche.component';
+import { PlantillaComponent } from './plantilla/plantilla.component';
+import { TodosComponent } from './todos/todos.component';
 
 // Servicios
 import { CochesService } from './providers/coches.service';
 import { RecetasService } from './providers/recetas.service';
-import { FormularioComponent } from './recetario/formulario/formulario.component';
-import { FormuCocheComponent } from './concesionario/formu-coche/formu-coche.component';
+import { TodosService } from './providers/todos.service';
+
+// Importar HttpClientModule
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -46,15 +53,22 @@ import { FormuCocheComponent } from './concesionario/formu-coche/formu-coche.com
     RecetarioComponent,
     TarjetaComponent,
     FormularioComponent,
-    FormuCocheComponent
+    FormuCocheComponent,
+    PlantillaComponent,
+    TodosComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRouter,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [CochesService, RecetasService],
+  providers: [HttpClientModule,
+    CochesService,
+    RecetasService,
+    TodosService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

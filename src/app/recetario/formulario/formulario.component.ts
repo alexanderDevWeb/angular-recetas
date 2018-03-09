@@ -89,6 +89,12 @@ export class FormularioComponent implements OnInit {
     // Añado la receta mediante el servicio
     this.recetaService.crear(receta);
 
+    /*
+    Aquí deberíamos hacer un reset introduciendo los valores en un objeto literal como
+    como parámetro. Además se deja el array a1 elemento con splice();
+    Está en el ñultimo commit de Ander del 8/3
+    */
+
     // Creo un formulario para resetearlo
     this.crearFormulario();
 
