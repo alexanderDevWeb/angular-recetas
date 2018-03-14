@@ -34,6 +34,7 @@ import { TodosService } from './providers/todos.service';
 
 // Importar HttpClientModule
 import {HttpClientModule} from '@angular/common/http';
+import { FormBasicoComponent } from './form-basico/form-basico.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormularioComponent,
     FormuCocheComponent,
     PlantillaComponent,
-    TodosComponent
+    TodosComponent,
+    FormBasicoComponent
   ],
   imports: [
     BrowserModule,

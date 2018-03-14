@@ -8,7 +8,7 @@
       <li *ngFor="let todo of todos">
         <input type="checkbox" [checked]="todo.completed" (click)="cambiarEstado(todo.id)">
         <span [ngStyle]="{'text-decoration': (todo.completed) ? 'line-through' : ''}">{{todo.title}}</span>
-        <span class="glyphicon glyphicon-trash" (click)="eliminarTarea(todo.id)"></span>
+        <span class="glyphicon glyphicon-trash" (click)="delete(todo)"></span> <!-- (click)="eliminarTarea(todo.id)" -->
       </li>
     </ul>
   </section>

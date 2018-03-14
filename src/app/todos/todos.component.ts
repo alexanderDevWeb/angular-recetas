@@ -8,7 +8,7 @@ import { Todo } from '../model/todo';
   styleUrls: ['./todos.component.scss']
 })
 export class TodosComponent implements OnInit {
-  
+
   todos: Todo[];
   nuevaTarea: string;
   autoIncrement = 41;
@@ -20,16 +20,26 @@ export class TodosComponent implements OnInit {
 
   ngOnInit() {
     console.log('TodosComponent ngOnInit');
+
+    // Cargo las tareas
+    this.cargarTareas();
+  }
+
+  cargarTareas() {
+    console.log('TodosComponent cargarTareas');
+    this.todos = [];
     this.todosService.getTodos().subscribe(
       resultado => {
-        console.debug('Petición correcta %o', resultado);
+        // tslint:disable-next-line:no-console
+        console.debug('peticion correcta %o', resultado);
         this.mapeo(resultado);
       },
       error => {
-        console.warn('Petición incorrecta %o', error);
+        console.warn('peticion incorrecta %o', error);
       }
     );
   }
+
 
   /**
    * mapea los resultados de formato json a objetos Todo
@@ -48,7 +58,8 @@ export class TodosComponent implements OnInit {
     });
   }
 
-  eliminarTarea(id) {
+  // Versión con el array
+  /* eliminarTarea(id) {
     console.log(id);
 
     this.todos.forEach((todo, i) => {
@@ -57,7 +68,24 @@ export class TodosComponent implements OnInit {
         return false; // break
       }
     });
+  } */
+
+
+  // Versión Servicio Ander
+  delete(todo: Todo) {
+    console.log('TodosComponent delete %o', todo );
+
+    this.todosService.delete(todo.id).subscribe(
+      result => {
+        this.cargarTareas();
+      },
+      error => {
+        alert('No de pudo elimiar Tarea');
+      }
+    );
   }
+
+
 
   cambiarEstado(id) {
     this.todos.forEach((todo, i) => {
@@ -70,10 +98,11 @@ export class TodosComponent implements OnInit {
     });
   }
 
-  anadirTarea() {
+  // Versión con el
+  /* anadirTarea() {
     console.log(this.nuevaTarea);
 
-    let tarea = new Todo(this.nuevaTarea);
+    const tarea = new Todo(this.nuevaTarea);
     tarea.id = this.autoIncrement;
 
     // Asigno el id actual
@@ -82,5 +111,21 @@ export class TodosComponent implements OnInit {
     // Añado la tarea al array de tareas
     this.todos.unshift(tarea);
     console.log(this.todos);
+  } */
+
+  anadirTarea() {
+    console.log('TodosComponent new ');
+    const todo = new Todo(this.nuevaTarea);
+
+    this.todosService.post(todo).subscribe(
+      result => {
+        console.log('TodosComponent new %o', result);
+        this.cargarTareas();
+      },
+      error => {
+        alert('No de pudo Crear Nueva Tarea');
+        console.error(error);
+      }
+    );
   }
 }
